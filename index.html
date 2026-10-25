@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Plan weddings, birthdays and community events with a budget calculator, timeline tracker, vendor checklist and idea generator.">
+<title>Celebration &amp; Event Planner Dashboard</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#budget">Skip to main content</a>
+<header>
+  <h1>Celebration &amp; Event Planner</h1>
+  <p>Plan weddings, birthdays and community events: budget, timeline, vendors and creative ideas in one place.</p>
+  <nav aria-label="Dashboard sections">
+    <a href="#budget" aria-label="Go to Budget Calculator">Budget</a>
+    <a href="#timeline" aria-label="Go to Timeline Tracker">Timeline</a>
+    <a href="#vendors" aria-label="Go to Vendor Checklist">Vendors</a>
+    <a href="#ideas" aria-label="Go to Idea Generator">Ideas</a>
+  </nav>
+</header>
+<p class="status" id="status" role="status" aria-live="polite" aria-atomic="true">Welcome. Choose an event type and enter your budget to begin.</p>
+<main id="main">
+  <section id="budget" aria-labelledby="bh">
+    <h2 id="bh">1. Dynamic Budget Calculator</h2>
+    <p class="sub">Select an event type and total budget. Allocations are suggested automatically and can be edited.</p>
+    <form id="bf" novalidate aria-label="Budget calculator form">
+      <div class="f"><label for="bt">Event type</label><select id="bt" aria-label="Event type"><option value="wedding">Wedding</option><option value="birthday">Birthday</option><option value="community">Community Event</option></select></div>
+      <div class="f"><label for="bn">Total budget (₹)</label><input id="bn" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 300000" aria-label="Total budget in rupees" aria-describedby="be"></div>
+      <button type="submit" aria-label="Calculate budget breakdown">Calculate</button>
+      <button type="button" class="g" id="br" aria-label="Reset allocations to suggested split">Reset split</button>
+    </form>
+    <div class="al" id="be" role="alert" hidden></div>
+    <div id="bo" hidden>
+      <div class="tw" tabindex="0" role="region" aria-label="Expense breakdown table, scrollable">
+        <table>
+          <caption>Expense breakdown</caption>
+          <thead><tr><th scope="col">Category</th><th scope="col">Amount (₹)</th><th scope="col">Share</th><th scope="col">Cost-saving tip</th></tr></thead>
+          <tbody id="bb"></tbody>
+          <tfoot><tr><th scope="row">Total allocated</th><td id="fa"></td><td id="fp"></td><td id="fn"></td></tr></tfoot>
+        </table>
+      </div>
+      <div class="sum" role="group" aria-label="Budget summary">
+        <div class="pill">Total budget<b id="st">₹0</b></div>
+        <div class="pill">Allocated<b id="sa">₹0</b></div>
+        <div class="pill" id="rp">Remaining<b id="sr">₹0</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" aria-labelledby="th">
+    <h2 id="th">2. Chronological Timeline Tracker</h2>
+    <p class="sub">Tick milestones as you complete them, or add your own.</p>
+    <div class="bar" role="progressbar" aria-label="Timeline completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="tb"><span></span></div>
+    <p class="sub" id="tx"></p>
+    <form id="tf" novalidate aria-label="Add timeline milestone">
+      <div class="f wide"><label for="ti">New milestone</label><input id="ti" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Book photographer" aria-label="New milestone text" aria-describedby="te"></div>
+      <div class="f"><label for="tp">Phase</label><select id="tp" aria-label="Milestone phase"></select></div>
+      <button type="submit" aria-label="Add milestone">Add milestone</button>
+    </form>
+    <div class="al" id="te" role="alert" hidden></div>
+    <div class="grid" id="tg"></div>
+  </section>
+
+  <section id="vendors" aria-labelledby="vh">
+    <h2 id="vh">3. Vendor Checklist</h2>
+    <p class="sub">Track every vendor from vetting to final payment.</p>
+    <div class="bar" role="progressbar" aria-label="Vendor checklist completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="vb"><span></span></div>
+    <p class="sub" id="vx"></p>
+    <form id="vf" novalidate aria-label="Add vendor task">
+      <div class="f wide"><label for="vi">New vendor task</label><input id="vi" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Confirm DJ playlist" aria-label="New vendor task text" aria-describedby="ve"></div>
+      <div class="f"><label for="vs">Stage</label><select id="vs" aria-label="Vendor task stage"></select></div>
+      <button type="submit" aria-label="Add vendor task">Add task</button>
+    </form>
+    <div class="al" id="ve" role="alert" hidden></div>
+    <div class="grid" id="vg"></div>
+  </section>
+
+  <section id="ideas" aria-labelledby="ih">
+    <h2 id="ih">4. Personalized Idea Generator</h2>
+    <p class="sub">Pick an event type and a vibe to generate tailored concepts, activities and layouts.</p>
+    <form id="if" novalidate aria-label="Idea generator form">
+      <div class="f"><label for="it">Event type</label><select id="it" aria-label="Idea event type"><option value="wedding">Wedding</option><option value="birthday">Birthday</option><option value="community">Community Event</option></select></div>
+      <div class="f"><label for="iv">Vibe / theme</label><select id="iv" aria-label="Vibe or theme"><option value="elegant">Elegant</option><option value="rustic">Rustic</option><option value="modern">Modern</option><option value="lowwaste">Low-Waste</option></select></div>
+      <button type="submit" aria-label="Generate ideas">Generate ideas</button>
+    </form>
+    <div class="al" id="ie" role="alert" hidden></div>
+    <div class="grid" id="io" aria-live="polite"></div>
+  </section>
+</main>
+<footer>Runs entirely in your browser. All typed text is sanitized before display.</footer>
+<script src="js/core.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

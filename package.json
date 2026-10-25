@@ -1,0 +1,12 @@
+{
+  "name": "celebration-event-planner",
+  "version": "1.0.0",
+  "description": "Accessible, secure, dependency-free event planner dashboard for weddings, birthdays and community events.",
+  "main": "js/core.js",
+  "scripts": {
+    "test": "node --test tests/core.test.js",
+    "start": "python3 -m http.server 8080"
+  },
+  "license": "MIT",
+  "private": true
+}
